@@ -1,7 +1,33 @@
 import data from './geojson/Abonnement-RRN.json' with {type: "json"};
 import fs from 'fs';
+import readline from 'readline';
 
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+//   });
+  
+//   const askQuestion = (question) => {
+//     return new Promise((resolve) => {
+//       rl.question(question, (answer) => {
+//         resolve(answer);
+//       });
+//     });
+//   };
+  
+//   // Main async function
+//   const main = async () => {
+//     // Get user input using await
+//     const name = await askQuestion('What is your name? ');
+  
+//     // Print the result
+//     console.log(`Hello, ${name}!`);
+  
+//     // Close the readline interface
+//     rl.close();
+//   };
 
+// main()
 
 // reduction du nombre de coordonnées sur la carte - smart simplify
 function smartCoordinateReducer(geojson){
@@ -13,7 +39,7 @@ function smartCoordinateReducer(geojson){
 
     geojson.features.map(feature => {
 
-        const coef = 300 // divise le nombre de coordonnées gardées
+        const coef = 50 // divise le nombre de coordonnées gardées
         const geoType = feature.geometry.type // type LineString ou MultiLineString
 
         if(geoType === 'LineString') {
